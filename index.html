@@ -1,0 +1,398 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAN O MAN — Menswear, Vijayawada</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#181A1D;
+    --paper:#EDE6D8;
+    --paper-dim:#E2D9C7;
+    --brick:#7A3B24;
+    --brass:#A9822E;
+    --moss:#454B3B;
+    --line: rgba(24,26,29,0.16);
+    --radius: 3px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3, .display{
+    font-family:'Instrument Serif', serif;
+    font-weight:400;
+    line-height:1.05;
+    letter-spacing:0.001em;
+    margin:0;
+  }
+  a{color:inherit;}
+  .wrap{
+    max-width:1120px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+  @media (max-width:640px){
+    .wrap{padding:0 20px;}
+  }
+ 
+  /* ---------- header ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(237,230,216,0.92);
+    backdrop-filter: blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 0;
+  }
+  .wordmark{
+    font-family:'Instrument Serif', serif;
+    font-size:1.5rem;
+    letter-spacing:0.03em;
+  }
+  .wordmark em{font-style:italic; color:var(--brick);}
+  .navlinks{
+    display:flex; gap:28px; list-style:none; margin:0; padding:0;
+    font-size:0.92rem;
+  }
+  .navlinks a{ text-decoration:none; border-bottom:1px solid transparent; padding-bottom:2px; transition:border-color .2s; }
+  .navlinks a:hover{ border-color: var(--brick); }
+  .navlinks{display:none;}
+  @media (min-width:760px){ .navlinks{display:flex;} }
+  .nav-cta{
+    display:inline-block;
+    background:var(--ink);
+    color:var(--paper);
+    padding:10px 18px;
+    border-radius: var(--radius);
+    text-decoration:none;
+    font-size:0.88rem;
+    font-weight:500;
+    white-space:nowrap;
+  }
+ 
+  /* ---------- hero ---------- */
+  .hero{
+    padding:88px 0 72px;
+    display:grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap:48px;
+    align-items:center;
+  }
+  @media (max-width:860px){ .hero{grid-template-columns:1fr; padding:56px 0 48px;} }
+  .hero h1{
+    font-size:clamp(2.6rem, 5.6vw, 4.4rem);
+    max-width: 12ch;
+  }
+  .hero-loc{
+    display:flex; align-items:center; gap:10px;
+    font-size:0.85rem;
+    color:var(--moss);
+    margin-bottom:18px;
+  }
+  .dot{width:6px;height:6px;border-radius:50%;background:var(--brick);display:inline-block;}
+  .hero p.lede{
+    margin-top:22px;
+    max-width:46ch;
+    font-size:1.08rem;
+    color:#3a3a38;
+  }
+  .hero-actions{ margin-top:34px; display:flex; gap:16px; flex-wrap:wrap; }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:13px 24px;
+    border-radius:var(--radius);
+    text-decoration:none;
+    font-size:0.94rem;
+    font-weight:500;
+    border:1px solid var(--ink);
+  }
+  .btn-solid{ background:var(--brick); border-color:var(--brick); color:var(--paper); }
+  .btn-solid:hover{ background:#63301d; }
+  .btn-ghost{ background:transparent; color:var(--ink); }
+  .btn-ghost:hover{ background:rgba(24,26,29,0.06); }
+ 
+  /* hero graphic: tailored jacket outline, drawn in SVG */
+  .hero-art{ display:flex; justify-content:center; }
+  .hero-art svg{ width:100%; max-width:340px; height:auto; }
+ 
+  /* ---------- section shell ---------- */
+  section{ padding:64px 0; border-top:1px solid var(--line); }
+  .section-head{
+    display:flex; justify-content:space-between; align-items:flex-end;
+    gap:24px; margin-bottom:40px; flex-wrap:wrap;
+  }
+  .section-head h2{ font-size:clamp(1.9rem,3vw,2.5rem); }
+  .section-head .index{
+    font-family:'Inter'; font-size:0.85rem; color:var(--moss);
+    border-bottom:1px solid var(--line); padding-bottom:4px;
+  }
+ 
+  /* ---------- collection cards ---------- */
+  .cards{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  @media (max-width:860px){ .cards{grid-template-columns:repeat(2,1fr);} }
+  .card{
+    background:var(--paper);
+    padding:30px 24px;
+    min-height:230px;
+    display:flex; flex-direction:column; justify-content:space-between;
+  }
+  .card .swatch{ width:100%; height:64px; border-radius:var(--radius); margin-bottom:22px; }
+  .card h3{ font-size:1.4rem; margin-bottom:8px; }
+  .card p{ font-size:0.9rem; color:#4a4a46; margin:0; }
+ 
+  .weave1{ background: repeating-linear-gradient(45deg, var(--brick), var(--brick) 4px, transparent 4px, transparent 10px), var(--paper-dim); }
+  .weave2{ background: repeating-linear-gradient(90deg, var(--moss), var(--moss) 3px, transparent 3px, transparent 9px), var(--paper-dim); }
+  .weave3{ background: repeating-linear-gradient(0deg, var(--brass), var(--brass) 2px, transparent 2px, transparent 8px), var(--paper-dim); }
+  .weave4{ background: repeating-linear-gradient(135deg, var(--ink), var(--ink) 2px, transparent 2px, transparent 9px), var(--paper-dim); }
+ 
+  /* ---------- sizing / tape measure ---------- */
+  .fit-wrap{ display:grid; grid-template-columns:0.9fr 1.1fr; gap:56px; align-items:center; }
+  @media (max-width:860px){ .fit-wrap{grid-template-columns:1fr;} }
+  .tape{ width:100%; }
+  .tape .tick text{ font-family:'Inter'; font-size:11px; fill:var(--moss); }
+  .fit-copy p{ color:#3a3a38; max-width:44ch; }
+  .fit-copy .note{
+    margin-top:22px; padding:14px 16px; border-left:2px solid var(--brick);
+    font-size:0.9rem; background:var(--paper-dim);
+  }
+ 
+  /* ---------- shipping ---------- */
+  .ship-grid{ display:grid; grid-template-columns:1fr 1fr; gap:56px; }
+  @media (max-width:860px){ .ship-grid{grid-template-columns:1fr;} }
+  .ship-list{ list-style:none; margin:0; padding:0; }
+  .ship-list li{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:16px 0; border-bottom:1px solid var(--line);
+    font-size:0.98rem;
+  }
+  .ship-list li span.tag{
+    font-size:0.78rem; color:var(--brick); border:1px solid var(--brick);
+    padding:3px 9px; border-radius:20px;
+  }
+  .globe{ display:flex; align-items:center; justify-content:center; }
+ 
+  /* ---------- visit ---------- */
+  .visit-grid{ display:grid; grid-template-columns:1fr 1.2fr; gap:40px; }
+  @media (max-width:860px){ .visit-grid{grid-template-columns:1fr;} }
+  .visit-details dt{ font-size:0.8rem; color:var(--moss); margin-top:20px; }
+  .visit-details dt:first-child{margin-top:0;}
+  .visit-details dd{ margin:4px 0 0; font-size:1.05rem; }
+  .mapbox{ border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; height:320px; }
+  .mapbox iframe{ width:100%; height:100%; border:0; filter:grayscale(0.25) contrast(1.05); }
+ 
+  /* ---------- footer ---------- */
+  footer{ border-top:1px solid var(--line); padding:48px 0 40px; }
+  .foot-grid{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:24px; align-items:flex-end; }
+  .foot-links{ display:flex; gap:22px; list-style:none; padding:0; margin:0; font-size:0.9rem; }
+  .foot-links a{ text-decoration:none; border-bottom:1px solid var(--line); }
+  .foot-note{ font-size:0.8rem; color:var(--moss); margin-top:28px; }
+ 
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
+</style>
+</head>
+<body>
+ 
+<header>
+  <div class="wrap nav">
+    <div class="wordmark">MAN <em>O</em> MAN</div>
+    <ul class="navlinks">
+      <li><a href="#collection">Collection</a></li>
+      <li><a href="#fit">Sizing</a></li>
+      <li><a href="#shipping">Shipping</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+    <a class="nav-cta" href="https://wa.me/919652320209" target="_blank" rel="noopener">Chat on WhatsApp</a>
+  </div>
+</header>
+ 
+<main>
+  <section class="hero wrap" style="border-top:none;">
+    <div>
+      <div class="hero-loc"><span class="dot"></span> Besant Road, Vijayawada</div>
+      <h1>Tailored menswear, sent anywhere you are.</h1>
+      <p class="lede">Blazers, ethnic wear and formal shirting from our store on J.D. Hospital Road — fitted in person or over a video call, then shipped worldwide.</p>
+      <div class="hero-actions">
+        <a class="btn btn-solid" href="https://wa.me/919652320209" target="_blank" rel="noopener">Chat on WhatsApp</a>
+        <a class="btn btn-ghost" href="#collection">View the collection</a>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 300 360" xmlns="http://www.w3.org/2000/svg">
+        <path d="M150 20 L110 45 L60 60 L45 100 L65 115 L75 100 L75 330 L225 330 L225 100 L235 115 L255 100 L240 60 L190 45 Z"
+              fill="none" stroke="#181A1D" stroke-width="2"/>
+        <path d="M150 20 L135 55 L150 75 L165 55 Z" fill="#7A3B24" stroke="#181A1D" stroke-width="1.5"/>
+        <line x1="150" y1="75" x2="150" y2="300" stroke="#181A1D" stroke-width="1"/>
+        <circle cx="150" cy="130" r="3" fill="#A9822E"/>
+        <circle cx="150" cy="165" r="3" fill="#A9822E"/>
+        <circle cx="150" cy="200" r="3" fill="#A9822E"/>
+        <path d="M75 120 L45 260" stroke="#181A1D" stroke-width="1.5" fill="none"/>
+        <path d="M225 120 L255 260" stroke="#181A1D" stroke-width="1.5" fill="none"/>
+      </svg>
+    </div>
+  </section>
+ 
+  <section id="collection" class="wrap">
+    <div class="section-head">
+      <h2>What's on the rack</h2>
+      <span class="index">4 categories</span>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="swatch weave1"></div>
+        <div>
+          <h3>Blazers</h3>
+          <p>Structured jackets in sizes 38–48, for weddings, office and everything between.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="swatch weave2"></div>
+        <div>
+          <h3>Ethnic wear</h3>
+          <p>Kurtas and sets for festivals and functions, made to fit your build.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="swatch weave3"></div>
+        <div>
+          <h3>Formal shirting</h3>
+          <p>Everyday and event shirts in a range of cuts and fabrics.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="swatch weave4"></div>
+        <div>
+          <h3>Accessories</h3>
+          <p>The finishing pieces — ask us in-store or on a video call.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+  <section id="fit" class="wrap">
+    <div class="section-head">
+      <h2>A fit for every build</h2>
+      <span class="index">Sizes 38–48</span>
+    </div>
+    <div class="fit-wrap">
+      <div class="fit-copy">
+        <p>Most pieces run from size 38 through 48, and our staff will help you find the right one in-store or by video call if you're ordering from outside Vijayawada.</p>
+        <div class="note">Not sure of your size? Send your measurements over WhatsApp before you order.</div>
+      </div>
+      <svg class="tape" viewBox="0 0 560 120" xmlns="http://www.w3.org/2000/svg">
+        <line x1="10" y1="60" x2="550" y2="60" stroke="#181A1D" stroke-width="1.5"/>
+        <!-- ticks 36 to 50, highlight 38-48 -->
+        <g class="tick" font-family="Inter">
+          <!-- generate 8 stops evenly for 36..50 step2 -->
+          <g>
+            <line x1="30" y1="45" x2="30" y2="75" stroke="#181A1D" stroke-width="1" opacity="0.35"/>
+            <text x="30" y="95" text-anchor="middle">36</text>
+ 
+            <line x1="100" y1="35" x2="100" y2="85" stroke="#7A3B24" stroke-width="2"/>
+            <text x="100" y="105" text-anchor="middle" fill="#7A3B24" font-weight="600">38</text>
+ 
+            <line x1="170" y1="35" x2="170" y2="85" stroke="#7A3B24" stroke-width="2"/>
+            <text x="170" y="105" text-anchor="middle" fill="#7A3B24" font-weight="600">40</text>
+ 
+            <line x1="240" y1="35" x2="240" y2="85" stroke="#7A3B24" stroke-width="2"/>
+            <text x="240" y="105" text-anchor="middle" fill="#7A3B24" font-weight="600">42</text>
+ 
+            <line x1="310" y1="35" x2="310" y2="85" stroke="#7A3B24" stroke-width="2"/>
+            <text x="310" y="105" text-anchor="middle" fill="#7A3B24" font-weight="600">44</text>
+ 
+            <line x1="380" y1="35" x2="380" y2="85" stroke="#7A3B24" stroke-width="2"/>
+            <text x="380" y="105" text-anchor="middle" fill="#7A3B24" font-weight="600">46</text>
+ 
+            <line x1="450" y1="35" x2="450" y2="85" stroke="#7A3B24" stroke-width="2"/>
+            <text x="450" y="105" text-anchor="middle" fill="#7A3B24" font-weight="600">48</text>
+ 
+            <line x1="520" y1="45" x2="520" y2="75" stroke="#181A1D" stroke-width="1" opacity="0.35"/>
+            <text x="520" y="95" text-anchor="middle">50</text>
+          </g>
+        </g>
+        <line x1="100" y1="60" x2="450" y2="60" stroke="#7A3B24" stroke-width="3"/>
+      </svg>
+    </div>
+  </section>
+ 
+  <section id="shipping" class="wrap">
+    <div class="section-head">
+      <h2>Ships worldwide</h2>
+      <span class="index">Prepaid only</span>
+    </div>
+    <div class="ship-grid">
+      <ul class="ship-list">
+        <li>Domestic delivery <span class="tag">Available</span></li>
+        <li>Worldwide shipping <span class="tag">Available</span></li>
+        <li>Cash on delivery <span class="tag">Not offered</span></li>
+        <li>Video call fittings <span class="tag">Available</span></li>
+      </ul>
+      <div class="globe" aria-hidden="true">
+        <svg viewBox="0 0 220 220" width="220" height="220">
+          <circle cx="110" cy="110" r="90" fill="none" stroke="#181A1D" stroke-width="1.5"/>
+          <ellipse cx="110" cy="110" rx="90" ry="34" fill="none" stroke="#454B3B" stroke-width="1"/>
+          <ellipse cx="110" cy="110" rx="90" ry="60" fill="none" stroke="#454B3B" stroke-width="1"/>
+          <line x1="20" y1="110" x2="200" y2="110" stroke="#454B3B" stroke-width="1"/>
+          <line x1="110" y1="20" x2="110" y2="200" stroke="#181A1D" stroke-width="1.5"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+ 
+  <section id="visit" class="wrap">
+    <div class="section-head">
+      <h2>Visit the store</h2>
+      <span class="index">Governorpet, Vijayawada</span>
+    </div>
+    <div class="visit-grid">
+      <dl class="visit-details">
+        <dt>Address</dt>
+        <dd>J.D. Hospital Road, Governorpet, Besant Road, Vijayawada, Andhra Pradesh</dd>
+        <dt>WhatsApp</dt>
+        <dd><a href="https://wa.me/919652320209" target="_blank" rel="noopener">+91 96523 20209</a></dd>
+        <dt>Instagram</dt>
+        <dd><a href="https://www.instagram.com/manoman.vijayawada" target="_blank" rel="noopener">@manoman.vijayawada</a></dd>
+      </dl>
+      <div class="mapbox">
+        <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=J.D.+Hospital+Road,+Governorpet,+Vijayawada&output=embed">
+        </iframe>
+      </div>
+    </div>
+  </section>
+</main>
+ 
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="wordmark" style="font-size:1.3rem;">MAN <em>O</em> MAN</div>
+      <ul class="foot-links">
+        <li><a href="https://wa.me/919652320209" target="_blank" rel="noopener">WhatsApp</a></li>
+        <li><a href="https://www.instagram.com/manoman.vijayawada" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://www.facebook.com/manOmanvijayawada/" target="_blank" rel="noopener">Facebook</a></li>
+      </ul>
+    </div>
+    <p class="foot-note">Unofficial site built from the store's public Instagram and Facebook listings — verify current details with the store before ordering.</p>
+  </div>
+</footer>
+ 
+</body>
+</html>
+ 
